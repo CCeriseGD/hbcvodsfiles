@@ -52,7 +52,7 @@
 
     const highlightsheet = new CSSStyleSheet()
     function messageTimestamp(msgid, seconds) {
-        window.history.pushState("object or string", "eeee", "/vod.html?v=" + id + "&t=" + seconds + "&hl=" + msgid)
+        window.history.pushState("object or string", "eeee", "vod.html?v=" + id + "&t=" + seconds + "&hl=" + msgid)
         highlightsheet.replaceSync("#" + msgid + " {background-color: #35353b}")
         //document.getElementById("vod").currentTime = seconds
         skipto(seconds)
@@ -71,7 +71,7 @@
                 if (currentChunk < 1) {
                     currentChunk = 1
                 }
-                document.getElementById("vod").src = "/vods/" + id + "_" + currentChunk + ".mp4"
+                document.getElementById("vod").src = "vods/" + id + "_" + currentChunk + ".mp4"
                 document.getElementById("vod").currentTime = timestamp;
 
                 length = metadata.length
@@ -110,7 +110,7 @@
     // https://stackoverflow.com/a/28839954
     function preload(ch) {
         var xhr = new XMLHttpRequest();
-        xhr.open("GET", "/vods/" + id + "_" + ch + ".mp4", true);
+        xhr.open("GET", "vods/" + id + "_" + ch + ".mp4", true);
         xhr.responseType = "arraybuffer";
 
         xhr.onload = function(oEvent) {
@@ -266,7 +266,7 @@
         let ch = Math.ceil(time / chunklen)
         if (ch != currentChunk) {
             currentChunk = ch
-            video.src = "/vods/" + id + "_" + currentChunk + ".mp4"
+            video.src = "vods/" + id + "_" + currentChunk + ".mp4"
             video.currentTime = time - (currentChunk - 1) * chunklen
         } else {
             video.currentTime = time - (currentChunk - 1) * chunklen
