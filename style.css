@@ -1,0 +1,261 @@
+@font-face {
+    font-family: inter;
+    src: url(inter.ttf)
+}
+html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+}
+body {
+    font-family: "inter", Helvetica, Arial, sans-serif;
+    background-color: #0e0e10;
+    color: #ddd;
+    display: grid;
+    grid-template-rows: 80px calc(100% - 80px);
+    grid-template-columns: 70% 1fr;
+}
+#titlewrapper {
+    grid-column: 1;
+    display: grid;
+    grid-template-rows: 70px calc(100% - 70px)
+}
+#title {
+    margin: 20px;
+}
+h1 {
+    margin: 0px;
+    padding: 20px;
+    width: 100vw;
+    text-align: center;
+    box-sizing: border-box;
+    border-bottom: 1px solid #38383f;
+}
+#vodwrapper {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background-color: #000
+}
+#videoContainer {
+    max-width: max-content;
+    max-height: max-content;
+    display: block;/*
+    left: 50%;
+    transform: translate(-50%, 0%);*/
+}
+#vod {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+#chatwrapper {
+    grid-column: 2;
+    width: 100%;
+    box-sizing: border-box;
+    border-left: 1px solid #38383f;
+    display: grid;
+    grid-template-rows: max-content calc(100vh - 150px);
+}
+#chatwrapper h2 {
+    grid-row: 1;
+    background-color: #1f1f23;
+    margin: 0px;
+    padding: 20px;
+    text-align: center;
+    box-sizing: border-box;
+    border-bottom: 1px solid #38383f;
+}
+#chat {
+    grid-row: 2;
+    font-size: 12px;
+    background-color: #18181b;
+    margin: 0px;
+    padding: 10px;
+    overflow-y: scroll;
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    column-gap: 4px;
+    row-gap: 6px;
+    scroll-behavior: smooth;
+}
+#chat img {
+    display: inline-block;
+    margin-bottom: -3px;
+}
+#chat span span {
+    font-weight: 700;
+}
+#chat > button {
+    grid-column: 1;
+    background-color: transparent;
+    border: none;
+    font-family: "inter";
+    color: #ddd;
+    height: max-content;
+    width: max-content;
+    margin-right: 0px;
+    margin-left: auto;
+    margin-top: -2px;
+}
+#chat > button:hover, #chat > button:active {
+    background-color: #35353b
+}
+#chat > span {
+    grid-column: 2;
+    padding: 2px;
+    padding-bottom: 1px;
+    margin-top: -2px;
+    max-width: max-content;
+}
+
+.hover {
+    position: relative;
+}
+.hover::before {
+    visibility: hidden;
+    opacity: 0;
+    content: attr(hovertext);
+    position: absolute;
+    bottom: 20px;
+    left: -5px;
+    background-color: #38383f;
+    color: #fff;
+    padding: 5px;
+    padding-top: 2px;
+    border-radius: 3px;
+    width: max-content;
+    margin: auto;
+    font-weight: 500;
+    transition: opacity 0.2s ease-in-out;
+}
+.hover:hover::before {
+    visibility: visible;
+    opacity: 1;
+}
+
+figure {
+    margin: 0px;
+}
+@keyframes hideanim {
+    8.3% {
+        opacity: 1;
+    }
+    91.6% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+@keyframes hideanim2 {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+#video-controls {
+    position: absolute;
+    margin: 0px;
+    bottom: 0px;
+    width: 70vw;
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+    height: 80px;
+    background: linear-gradient(to top, #000a, #0007, #0000);
+}
+#video-controls:hover {
+    opacity: 1;
+}
+#video-controls:not(:hover) {
+    animation-name: hideanim2;
+    animation-duration: 0.2s;
+    animation-iteration-count: 1;
+}
+#vod:hover + #video-controls {
+    animation-name: hideanim;
+    animation-duration: 3s;
+    animation-iteration-count: 1;
+}
+#rightcontrols {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+}
+#leftcontrols {
+    position: absolute;
+    left: 10px;
+    bottom: 10px;
+}
+#progress-bar {
+    position: absolute;
+    /** /background-color: hsla(0,0%,100%,.35);/**/
+    width: calc(100% - 40px);
+    height: 4px;
+    padding-top: 10px;
+    padding-bottom: 8px;
+    bottom: 42px;
+    left: 20px;
+}
+#progress-empty {
+    width: 100%;
+    background-color: hsla(0,0%,100%,.35)
+}
+#progress-full {
+    background-color: #a970ff;
+    width: 0;
+    height: 4px;
+    position: relative;
+}
+#video-controls button {
+    background-color: transparent;
+    border: none;
+    padding: 5px 5px 2px 5px;
+    border-radius: 4px;
+    margin: 0px;
+}
+#video-controls svg {
+    fill: white;
+    margin: 0px;
+}
+#video-controls button:hover {
+    background-color: rgba(255, 255, 255, 0.13);
+}
+#cicle {
+    position: absolute;
+    width: 0px;
+    height: 4px;
+    border-radius: 0px;
+    background-color: #fff;
+    right: 0px;
+    top: 0px;
+}
+#progress-bar:hover #cicle, #progress-bar:active #cicle {
+    width: 14px;
+    height: 14px;
+    border-radius: 7px;
+    right: -7px;
+    top: -5px;
+}
+#video-controls button.hover::before {
+    bottom: 32px;
+    z-index: 999
+}
+#rightcontrols .hover::before {
+    left: unset;
+    right: -5px;
+}
+h1 img {
+    position: absolute;
+    top: 6px; left: 10px; 
+    transform: scaleX(-1);
+}
+#time {
+    position: absolute;
+    top: -15px;
+    left: 0;
+    display: inline-block
+}
